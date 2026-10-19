@@ -1,0 +1,54 @@
+# ---------------------------------------------------------------------------
+# dsh-feynman-deck 专用 .gitignore
+#
+# 写法依据：本目录当前的未跟踪文件只有 node_modules/，其余条目是逐条注明用途的
+# 通用防护。
+#
+# 特别注意：lib/ 和 scripts/ 是本项目的**源码**，不能忽略。本文件所在的上层
+# DSH 仓库在它的根 .gitignore 里全局忽略了 lib/，那是给别的子项目用的，照抄过来
+# 会把 lib/feynman.js 丢掉。
+# ---------------------------------------------------------------------------
+
+# 依赖 —— 本插件必须在本目录执行 npm install，原因见 README「安装」第三步
+node_modules/
+
+# 构建产物 —— 本项目目前没有构建步骤，留这几条防备将来引入打包
+dist/
+build/
+*.tsbuildinfo
+
+# 打包产物 —— npm pack 的产物
+*.tgz
+*.tar.gz
+
+# 缓存
+.cache/
+.npm-cache/
+
+# 日志
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# 环境与密钥 —— 绝不提交
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# 编辑器与系统文件
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# 测试覆盖率 —— 本项目目前只做语法检查，没有覆盖率产物，留作防护
+coverage/
+
+# 本地数据与临时文件 —— 手工验证脚本的默认落点
+tmp/
+.feynman-try/
